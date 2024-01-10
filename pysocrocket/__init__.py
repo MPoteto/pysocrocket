@@ -9,7 +9,7 @@ class SocRocket:
         return requests.get(f"{self.main_url}?action=balance&key={self.api_key}").json()
     
     def get_services(self):
-        return requests.get(f"{self.main_url}?action=services&key={self.api_key}")
+        return requests.get(f"{self.main_url}?action=services&key={self.api_key}").json()
     
     def create_order(self, service_id: int, link: str, quantity: int):
         """
@@ -26,7 +26,7 @@ class SocRocket:
         error        Описание ошибки, в случае неудачного запроса
 
         """
-        return requests.get(f"{self.main_url}?action=add&key={self.api_key}&service={service_id}&link={link}&quantity={quantity}")
+        return requests.get(f"{self.main_url}?action=add&key={self.api_key}&service={service_id}&link={link}&quantity={quantity}").json()
     
     def get_order_status(self, order_id: int):
         """
@@ -49,7 +49,7 @@ class SocRocket:
         error	     Описание ошибки, в случае неудачного запроса
 
         """
-        return requests.get(f"{self.main_url}?action=status&key={self.api_key}&order={self.api_key}")
+        return requests.get(f"{self.main_url}?action=status&key={self.api_key}&order={self.api_key}").json()
     
     def order_cancel(self, order_id: int):
         """
@@ -64,7 +64,7 @@ class SocRocket:
         error        Описание ошибки, в случае неудачного запроса
         
         """
-        return requests.get(f"{self.main_url}?action=cancel&key={self.api_key}")
+        return requests.get(f"{self.main_url}?action=cancel&key={self.api_key}").json()
     
     def order_refill(self, order_id: int):
         """
@@ -79,10 +79,10 @@ class SocRocket:
         error        Описание ошибки, в случае неудачного запроса
         
         """
-        return requests.get(f"{self.main_url}?action=refill&key={self.api_key}")
+        return requests.get(f"{self.main_url}?action=refill&key={self.api_key}").json()
     
     
-    def order_refill(self, orders_id: int):
+    def get_orders_status(self, orders_id: int):
         """
 
         Вход
@@ -103,4 +103,4 @@ class SocRocket:
         error         Описание ошибки, в случае неудачного запроса
         
         """
-        return requests.get(f"{self.main_url}?action=status&orders={orders_id}&key={self.api_key}")
+        return requests.get(f"{self.main_url}?action=status&orders={orders_id}&key={self.api_key}").json()
